@@ -1,9 +1,8 @@
 # Quarantine Model, Daniel Moon and Cy Pabis, 4/9/20
 
-# Importing numpy, matplotlib, and 
+# Importing numpy and matplotlib
 import numpy as np
 import matplotlib.pyplot as plt 
-import tkinter as tk
 
 # Euler Function for Graphing
 def Euler(S0, I0, Q0, R0, d, dt):
