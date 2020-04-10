@@ -28,10 +28,11 @@ def Euler(S0, I0, Q0, R0, d, dt, a):
 
     # Setting up relations for systems of equations and graphing
     for i in range(1, len(t)):
+
         suscept[i] =  (suscept[i-1]) - dt*(a * suscept[i-1] * infect[i-1])
         infect[i] = infect[i-1]+ dt*(a*suscept[i-1] * infect[i-1] - b*infect[i-1] - d*infect[i-1])
-        quar[i] = quar[i-1] + dt*(b*infect[i-1] - d * quar[i-1])
-        recover[i] = recover[i-1] + dt*(d*infect[i-1] + d*quar[i-1])
+        quar[i] = quar[i-1] + dt*(b*infect[i-1] - (1/6) * quar[i-1])
+        recover[i] = recover[i-1] + dt*(d*infect[i-1] + (1/6) *quar[i-1])
 
     # Graph the individual systems 
     s, = plt.plot(t, suscept)
@@ -50,7 +51,7 @@ def Euler(S0, I0, Q0, R0, d, dt, a):
 
 
 # Setting starting values for suscept, infect, quar, recover, and the recovery rate
-S0 = 18223
+issionS0 = 18223
 I0 = 11
 Q0 = 0
 R0 = 0
