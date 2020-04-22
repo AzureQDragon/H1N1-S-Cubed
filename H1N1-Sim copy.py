@@ -51,7 +51,7 @@ def Euler(S0, I0, Q0, R0, d, dt, a):
 
 
 # Setting starting values for suscept, infect, quar, recover, and the recovery rate
-issionS0 = 18223
+S0 = 18223
 I0 = 11
 Q0 = 0
 R0 = 0
