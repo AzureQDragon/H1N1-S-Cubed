@@ -34,6 +34,14 @@ def Euler(S0, I0, Q0, R0, d, dt, a):
         quar[i] = quar[i-1] + dt*(b*infect[i-1] - (1/6) * quar[i-1])
         recover[i] = recover[i-1] + dt*(d*infect[i-1] + (1/6) *quar[i-1])
 
+    print(infect.max())
+    print(quar.max())
+
+    for i in range(5, 10000):
+        if infect[i] <= 1:
+            output = i
+            break
+    print(output)
     # Graph the individual systems 
     s, = plt.plot(t, suscept)
     i, = plt.plot(t, infect)
@@ -51,7 +59,7 @@ def Euler(S0, I0, Q0, R0, d, dt, a):
 
 
 # Setting starting values for suscept, infect, quar, recover, and the recovery rate
-S0 = 18223
+S0 = 18223  # 100000
 I0 = 11
 Q0 = 0
 R0 = 0
