@@ -11,8 +11,8 @@ def Euler(S0, I0, Q0, R0, dt):
     b = .1
     a =  (1.8/31.5) *.00025*.5025 + .00025*.4975
     print(a)
-    d = .5025*1.25*(1/6) + .4975*(1/6)
-    g = (1/6) * (1/.8)
+    d = 380383/1096800
+    g = 1440/2742
 
     # Setup of the t array
     t = np.arange(0, 100, dt)
@@ -28,7 +28,6 @@ def Euler(S0, I0, Q0, R0, dt):
     infect[0] = I0
     quar[0] = Q0
     recover[0] = R0
-    P = .01147*I0
 
     # Setting up relations for systems of equations and graphing
     for i in range(1, len(t)):
@@ -41,10 +40,10 @@ def Euler(S0, I0, Q0, R0, dt):
     # Find the maximums of infected population and quarantine population and print
     print(infect.max())
     print(quar.max())
-    print(len(quar))
-    # Find the index of 
+    # Find the index of when the infected population hit zero
+    output = 0
     for i in range(5, 10000):
-        if infect[i] <= 1:
+        if infect[i] < 1:
             output = i
             break
     print(output)
@@ -58,7 +57,7 @@ def Euler(S0, I0, Q0, R0, dt):
     plt.xlabel("Time (Days)")
     plt.ylabel("Population")
     plt.legend(("Susceptible Pop", "Infected Pop", "Quarantined Pop", "Recovered Pop"))
-    plt.title("H1N1 Infection")
+    plt.title("H1N1 Infections with Antiviral Treatments")
     plt.grid(True)
     plt.show()
     return

@@ -38,7 +38,7 @@ def Euler(S0, I0, Q0, R0, d, dt, a):
     print(quar.max())
 
     for i in range(5, 10000):
-        if infect[i] <= 1:
+        if infect[i] < 1:
             output = i
             break
     print(output)
@@ -52,7 +52,7 @@ def Euler(S0, I0, Q0, R0, d, dt, a):
     plt.xlabel("Time (Days)")
     plt.ylabel("Population")
     plt.legend(("Susceptible Pop", "Infected Pop", "Quarantined Pop", "Recovered Pop"))
-    plt.title("H1N1 Infection")
+    plt.title("Control H1N1 Infected Population")
     plt.grid(True)
     plt.show()
     return
