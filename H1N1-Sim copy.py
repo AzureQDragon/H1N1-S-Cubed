@@ -1,5 +1,4 @@
-# Quarantine Model, Daniel Moon and Cy Pabis, 4/9/20
-
+# Control Quarantine Model, Daniel Moon and Cy Pabis, 4/9/20
 # Importing numpy and matplotlib
 import numpy as np
 import matplotlib.pyplot as plt 
@@ -8,7 +7,7 @@ import matplotlib.pyplot as plt
 def Euler(S0, I0, Q0, R0, d, dt, a):
     global s, i, q, r
 
-    # Setting the 
+    # Setting the constant variable
     b = .1
 
     # Setup of the t array
@@ -34,14 +33,17 @@ def Euler(S0, I0, Q0, R0, d, dt, a):
         quar[i] = quar[i-1] + dt*(b*infect[i-1] - (1/6) * quar[i-1])
         recover[i] = recover[i-1] + dt*(d*infect[i-1] + (1/6) *quar[i-1])
 
+    # Print out the max population of infected and quarantined
     print(infect.max())
     print(quar.max())
 
+    # Finds the length of the outbreak
     for i in range(5, 10000):
         if infect[i] < 1:
             output = i
             break
     print(output)
+
     # Graph the individual systems 
     s, = plt.plot(t, suscept)
     i, = plt.plot(t, infect)
@@ -59,11 +61,12 @@ def Euler(S0, I0, Q0, R0, d, dt, a):
 
 
 # Setting starting values for suscept, infect, quar, recover, and the recovery rate
-S0 = 18223  # 100000
+S0 = 18223
 I0 = 11
 Q0 = 0
 R0 = 0
 d = 1/6
 a = 25 * (10**-5)
+
 # Running the Euler function
 Euler(S0, I0, Q0, R0, d, .01, a)

@@ -1,4 +1,4 @@
-# Quarantine Model, Daniel Moon and Cy Pabis, 4/9/20
+# Quarantine Model with Antiviral Treatment, Daniel Moon and Cy Pabis, 4/27/20
 # Importing numpy and matplotlib
 import numpy as np
 import matplotlib.pyplot as plt 
@@ -31,7 +31,6 @@ def Euler(S0, I0, Q0, R0, dt):
 
     # Setting up relations for systems of equations and graphing
     for i in range(1, len(t)):
-
         suscept[i] =  (suscept[i-1]) - dt*(a * suscept[i-1] * infect[i-1])
         infect[i] = infect[i-1]+ dt*(a*suscept[i-1] * infect[i-1] - b*infect[i-1] - d*infect[i-1])
         quar[i] = quar[i-1] + dt*(b*infect[i-1] - g * quar[i-1])
@@ -40,13 +39,14 @@ def Euler(S0, I0, Q0, R0, dt):
     # Find the maximums of infected population and quarantine population and print
     print(infect.max())
     print(quar.max())
+
     # Find the index of when the infected population hit zero
-    output = 0
     for i in range(5, 10000):
         if infect[i] < 1:
             output = i
             break
     print(output)
+
     # Graph the individual systems 
     s, = plt.plot(t, suscept)
     i, = plt.plot(t, infect)
